@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if(!isset($_SESSION['login'])) {
+    header("Location: auth/login.php");
+    exit;
+}
+
 require('connect.php');
 
 // Cek apakah parameter id ada di URL
@@ -79,7 +87,7 @@ if (isset($_POST['ubah'])) {
         <label for="nomor" class="form-label text-white bg-primary p-1 px-3 rounded-5">Nomor HP</label>
         <div class="input-group">
             <div class="input-group-text">+62</div>
-            <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Silakan masukan Nomor HP anda" value="<?= $data['no_hp'] ?>" required>
+            <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Silakan masukan Nomor HP anda" value="<?= $data['no_hp'] ?>" required>
         </div>
     </div>  
 

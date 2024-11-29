@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['login'])) {
+    header("Location: auth/login.php");
+    exit;
+}
+
 require('connect.php');
 
 if(isset($_POST['submit'])) {
@@ -50,10 +57,10 @@ if(isset($_POST['submit'])) {
     </div>
     
     <div class="col-12 mb-3">
-        <label for="email" class="form-label text-white bg-primary p-1 px-3 rounded-5">Nomor HP</label>
+        <label for="nomor" class="form-label text-white bg-primary p-1 px-3 rounded-5">Nomor HP</label>
         <div class="input-group">
             <div class="input-group-text">+62</div>
-            <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Silakan masukan Nomor HP anda">
+            <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Silakan masukan Nomor HP anda">
         </div>
     </div>  
 

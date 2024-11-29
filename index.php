@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['login'])) {
+    header("Location: auth/login.php");
+    exit;
+}
+
 require('connect.php');
 
 $query = mysqli_query($conn, "SELECT * FROM pengaduan");
